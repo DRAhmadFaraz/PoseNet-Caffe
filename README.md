@@ -1,11 +1,11 @@
-# Proper Installation Guide for this Pose_Net 
+# Proper Installation Guide for this Pose_Net
 
-Requirements:
-Ubuntu > 16.04
-Cuda = 10.1
+Requirements: 
+Ubuntu > 16.04 
+Cuda = 10.1 
 CUdnn 7.5 For Cuda = 10.1
 
-# For PoseNet Caffe Installation:
+# For Posenet Caffe Installation:
 
 Steps:
 sudo apt-get update sudo apt-get upgrade
@@ -17,32 +17,28 @@ sudo apt-get install --no-install-recommends libboost-all-dev sudo apt-get insta
 sudo apt-get install libopenblas-dev sudo apt-get install the python-dev
 
 sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev sudo apt install python-pip
-
 pip install --upgrade pip
 
 mkdir .local/install cd .local/install
-git clone https://github.com/alexgkendall/caffe-posenet.git
+git clone https://github.com/BVLC/caffe.git
 
 
 cd caffe
-find -name requirements.txt cd python
-for req in $(cat requirements.txt); do sudo -H pip install $req; done Copy the Makefile.config or make it from scratch
 
-cd..
-python -m site
-/home/ahmad/.local/lib/python2.7/site-packages If want to make from scratch Makefile.config file 
+find -name requirements.txt cd python
+
+for req in $(cat requirements.txt); do sudo -H pip install $req; done Copy the Makefile.config or make it 
+
+# If want to make from scratch Makefile.config file 
 cp Makefile.config.example Makefile.config
 gedit Makefile.config
-(edit it, enable cpu)
-The following line in the configuration file tells the program to use CPU only for the computations.
-
-CPU_ONLY := 1
 
 The Makefile.config should contain the following lines, so find them and fill them in.
 
 PYTHON_INCLUDE := /usr/include/python2.7
 /usr/lib/python2.7/dist-packages/numpy/core/include
-(for some Ubuntu 16.04 users, the path may be different) PYTHON_INCLUDE := /usr/include/python2.7
+(for some Ubuntu 16.04 users, the path may be different) 
+PYTHON_INCLUDE := /usr/include/python2.7
 /usr/local/lib/python2.7/dist-packages/numpy/core/include WITH_PYTHON_LAYER := 1
 INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial
 
@@ -52,12 +48,14 @@ LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib /usr/lib/x86_64-linux-gnu
 Finish file Makefile.config now test the caffe
 
 make all
-
 If get error (make: *** [.build_release/tools/upgrade_net_proto_binary.bin] Error 1)
-
 make clean
 
-Uncomment if you're using OpenCV 3 OPENCV_VERSION := 3
+# Uncomment if you're using OpenCV 3 
+OPENCV_VERSION := 3
+ 
+ 
+
 make test
  
 
@@ -71,19 +69,25 @@ make pycaffe
 make pytest
 
   
-final test 
+
+
+# Final test 
 python 
 import sys
 sys.path.append('/home/ahmad/Desktop/caffe-posenet/python') 
 import caffe
 
 
+ A
 All done…
+
+
 
 
 # Getting Started with posenet now
 
 pip install lmdb
+pip install opencv-python
 sudo apt-get install python-sklearn
 
 cd /home/ahmad/Desktop/caffe-posenet/posenet/scripts
@@ -92,7 +96,7 @@ Create an LMDB localisation dataset with
 caffe-posenet/posenet/scripts/create_posenet_lmdb_dataset.py
 
 Change lines 1, 11 & 12 to the appropriate directories.
-Test PoseNet with
+Test PoseNet with (do according to your path)
 
 caffe_root = '/home/ahmad/Desktop/caffe-posenet/' # Change to your directory to caffe-posenet
 
@@ -170,6 +174,45 @@ Direct test
 input the command:
 sudo python posenet/scripts/test_posenet.py --model models/PoseNet_rawmodel/train_kingscollege.prototxt --weights models/PoseNet_rawmodel/weights_kingscollege.caffemodel --iter 8
 Test Results:
+
+
+# Some common issues (Skip these if u dont face it) 
+
+ls /home/ahmad/.local/lib/python2.7/
+find /home/ahmad/.local/lib/python2.7/site-packages -name numpy
+/home/ahmad/.local/lib/python2.7/site-packages/numpy/core/include ## if error fatal error: hdf5.h: No such file or directory
+find /usr/lib -name hdf5
+( you will see	/usr/lib/x86_64-linux-gnu/hdf5 ) ## copy these lines in
+gksudo gedit Makefile.config
+# Whatever else you find you need goes here.
+INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial/ LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib /usr/lib/x86_64-linux-gnu/hdf5/serial/ ## ImportError: No module named pydot
+find /home/ahmad/.local/lib/ -name "pydot*" python
+import pydot
+## ImportError: No module named pydot cd .local/install/caffe
+gedit Makefile.config
+cd .local/install/caffe/python vi requirements.txt
+/pydot:
+:q
+sudo -H pip install pydot make pytest
+## make: *** [pytest] Error 1 sudo apt-get install graphviz python
+import pydot exit()
+make pytest
+cd .local/install/caffe/python ls caffe
+The build process will fail in Ubuntu 16.04. Edit the Makefile with an editor such as kate ./Makefile
+or
+gksudo gedit Makefile and replace this line:
+NVCCFLAGS += -ccbin=$(CXX) -Xcompiler -fPIC $(COMMON_FLAGS) with the following line
+NVCCFLAGS += -D_FORCE_INLINES -ccbin=$(CXX) -Xcompiler -fPIC $(COMMON_FLAGS)
+ 
+Also, open the file CMakeLists.txt and add the following line:
+
+# ---[ Includes
+set(${CMAKE_CXX_FLAGS} "-D_FORCE_INLINES ${CMAKE_CXX_FLAGS}")
+
+if you encounter a missing CUDA error with CUDA version 8.0, find this line in the Makefile.config: CUDA_DIR := /usr/local/cuda
+Add Matlab path if you want,
+# This is required only if you will compile the matlab interface. # MATLAB directory should contain the mex binary in /bin.
+MATLAB_DIR := /usr/local/MATLAB/R2016a/ # MATLAB_DIR := /Applications/R2016a.app
 
 
 
