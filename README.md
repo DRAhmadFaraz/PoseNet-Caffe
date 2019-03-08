@@ -51,7 +51,7 @@ make all
 If get error (make: *** [.build_release/tools/upgrade_net_proto_binary.bin] Error 1)
 make clean
 
-# Uncomment if you're using OpenCV 3 
+**Uncomment if you're using OpenCV 3** 
 OPENCV_VERSION := 3
  
  
