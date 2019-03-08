@@ -8,7 +8,7 @@ CUdnn 7.5 For Cuda = 10.1
 # For Posenet Caffe Installation:
 
 Steps:
-sudo apt-get update sudo apt-get upgrade
+**_sudo apt-get update sudo apt-get upgrade
 
 sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
 
@@ -23,7 +23,7 @@ mkdir .local/install cd .local/install
 git clone https://github.com/BVLC/caffe.git
 
 
-cd caffe
+cd caffe_**
 
 find -name requirements.txt cd python
 
