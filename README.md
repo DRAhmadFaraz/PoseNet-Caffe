@@ -46,9 +46,10 @@ Install Dependencies
 
 
 ### If want to make from scratch Makefile.config file Or just copy makefile.config from this repository
-gedit Makefile.config_**
 
 **_cp Makefile.config.example Makefile.config_** 
+
+**_gedit Makefile.config_**
 
 
 The Makefile.config should contain the following lines, so find them and fill them in.
