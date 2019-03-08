@@ -8,32 +8,25 @@ CUdnn 7.5 For Cuda = 10.1
 # For Posenet Caffe Installation:
 
 Steps:
+Install Dependencies
 
+
+```
 **_sudo apt-get update sudo apt-get upgrade_**
-
 **_sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler_**
-
 **_sudo apt-get install --no-install-recommends libboost-all-dev sudo apt-get install libatlas-base-dev_**
-
 **_sudo apt-get install libopenblas-dev sudo apt-get install the python-dev_**
-
 **_sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev sudo apt install python-pip_**
-
 **_pip install --upgrade pip_**
-
 **_mkdir .local/install cd .local/install_**
-
 **_git clone https://github.com/BVLC/caffe.git_**
-
-**_cd caffe_**
-
-
-find -name requirements.txt cd python
-
+**_cd caffe-posenet_**
+**_cd python_**
 **_for req in $(cat requirements.txt); do sudo -H pip install $req; done Copy the Makefile.config or make it_** 
+**_cp Makefile.config.example Makefile.config_** 
+```
 
-# If want to make from scratch Makefile.config file 
-**_cp Makefile.config.example Makefile.config
+### If want to make from scratch Makefile.config file 
 gedit Makefile.config_**
 
 The Makefile.config should contain the following lines, so find them and fill them in.
