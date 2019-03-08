@@ -27,6 +27,7 @@ git clone https://github.com/BVLC/caffe.git
 
 cd caffe_**
 
+
 find -name requirements.txt cd python
 
 **_for req in $(cat requirements.txt); do sudo -H pip install $req; done Copy the Makefile.config or make it_** 
