@@ -166,10 +166,12 @@ Put the lmdb dataset generated in the previous step into the caffe-posenet/data 
 
 Run create_posenet_mean.sh to get the mean.binaryproto file.
 
+**_python ./posenet/scripts/create_posenet_lmdb_dataset.py_**
+
 
 ### Add executable permissions
-**_chmod 777 posenet/scripts/create_posenet_mean.sh
-**_./posenet/scripts/create_posenet_mean.sh
+**_chmod 777 posenet/scripts/create_posenet_mean.sh _**
+**_./posenet/scripts/create_posenet_mean.sh _**
 
 Modify network configuration
 
@@ -180,9 +182,8 @@ Modify the path of the source and mean_file of the layer whose name is data, pha
 Direct test
 input the command:
 
-**_PYTHONPATH=/home/ahmad/Desktop/caffe-posenet/python:$PYTHONPATH 
+**_PYTHONPATH=/home/ahmad/Desktop/caffe-posenet/python:$PYTHONPATH _**
 
-**_python ./posenet/scripts/create_posenet_lmdb_dataset.py_**
 
 **_python ./posenet/scripts/test_posenet.py --model \ posenet/models/train_posenet.prototxt --weights posenet/models/weights_kingscollege.caffemodel --iter 346_**
 
