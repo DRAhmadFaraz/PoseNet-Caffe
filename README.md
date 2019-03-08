@@ -66,8 +66,9 @@ If get error (make: *** [.build_release/tools/upgrade_net_proto_binary.bin] Erro
  
 
 **_make test_**
- ![image](https://user-images.githubusercontent.com/38114191/54049933-c63f1680-41ff-11e9-9ae2-2e1e8df713b5.png)
 
+
+![image](https://user-images.githubusercontent.com/38114191/54049933-c63f1680-41ff-11e9-9ae2-2e1e8df713b5.png)
 
 
 **_make runtest_**
@@ -77,7 +78,7 @@ If get error (make: *** [.build_release/tools/upgrade_net_proto_binary.bin] Erro
   
 **_make pycaffe_**
  
- ![image](https://user-images.githubusercontent.com/38114191/54049987-e8d12f80-41ff-11e9-998d-91c0913ecde9.png)
+![image](https://user-images.githubusercontent.com/38114191/54049987-e8d12f80-41ff-11e9-998d-91c0913ecde9.png)
 
 **_make pytest_**
 
@@ -183,9 +184,13 @@ Test Results:
 
 ls /home/ahmad/.local/lib/python2.7/
 find /home/ahmad/.local/lib/python2.7/site-packages -name numpy
-/home/ahmad/.local/lib/python2.7/site-packages/numpy/core/include ## if error fatal error: hdf5.h: No such file or directory
+/home/ahmad/.local/lib/python2.7/site-packages/numpy/core/include 
+
+if error fatal error: hdf5.h: 
+No such file or directory
 find /usr/lib -name hdf5
-( you will see	/usr/lib/x86_64-linux-gnu/hdf5 ) ## copy these lines in
+( you will see	/usr/lib/x86_64-linux-gnu/hdf5 )
+copy these lines in
 gksudo gedit Makefile.config
 # Whatever else you find you need goes here.
 INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial/ LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib /usr/lib/x86_64-linux-gnu/hdf5/serial/ ## ImportError: No module named pydot
