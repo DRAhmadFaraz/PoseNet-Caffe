@@ -3,7 +3,8 @@
 This is just the Implementation of Posenet
 
 As described in the ICCV 2015 paper PoseNet: A Convolutional Network for Real-Time 6-DOF Camera Relocalization Alex Kendall, Matthew Grimes and Roberto Cipolla [http://mi.eng.cam.ac.uk/projects/relocalisation/]
-Reference: [](https://github.com/alexgkendall/caffe-posenet)
+
+Reference: https://github.com/alexgkendall/caffe-posenet
 
 Requirements: 
 
@@ -42,11 +43,13 @@ Install Dependencies
 
 **_for req in $(cat requirements.txt); do sudo -H pip install $req; done Copy the Makefile.config or make it_** 
 
-**_cp Makefile.config.example Makefile.config_** 
 
 
 ### If want to make from scratch Makefile.config file Or just copy makefile.config from this repository
 gedit Makefile.config_**
+
+**_cp Makefile.config.example Makefile.config_** 
+
 
 The Makefile.config should contain the following lines, so find them and fill them in.
 ```
