@@ -169,6 +169,11 @@ Run create_posenet_mean.sh to get the mean.binaryproto file.
 **_python ./posenet/scripts/create_posenet_lmdb_dataset.py_**
 
 
+
+![image](https://user-images.githubusercontent.com/38114191/54049863-942db480-41ff-11e9-9887-c950ae055859.png)
+
+
+
 ### Add executable permissions
 **_chmod 777 posenet/scripts/create_posenet_mean.sh _**
 **_./posenet/scripts/create_posenet_mean.sh _**
@@ -190,8 +195,7 @@ input the command:
 
 Test Results:
 
-![image](https://user-images.githubusercontent.com/38114191/54049863-942db480-41ff-11e9-9887-c950ae055859.png)
-
+![image](https://user-images.githubusercontent.com/38114191/54033504-6408f600-41ac-11e9-826c-1115839178b4.png)
 
 # Some common issues (Skip these if u dont face it) 
 
