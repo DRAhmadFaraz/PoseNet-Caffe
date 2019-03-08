@@ -13,20 +13,31 @@ Install Dependencies
 
 
 **_sudo apt-get update sudo apt-get upgrade_**
+
 **_sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler_**
+
 **_sudo apt-get install --no-install-recommends libboost-all-dev sudo apt-get install libatlas-base-dev_**
+
 **_sudo apt-get install libopenblas-dev sudo apt-get install the python-dev_**
+
 **_sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev sudo apt install python-pip_**
+
 **_pip install --upgrade pip_**
+
 **_mkdir .local/install cd .local/install_**
+
 **_git clone https://github.com/BVLC/caffe.git_**
+
 **_cd caffe-posenet_**
+
 **_cd python_**
+
 **_for req in $(cat requirements.txt); do sudo -H pip install $req; done Copy the Makefile.config or make it_** 
+
 **_cp Makefile.config.example Makefile.config_** 
 
 
-### If want to make from scratch Makefile.config file 
+### If want to make from scratch Makefile.config file Or just copy makefile.config from this repository
 gedit Makefile.config_**
 
 The Makefile.config should contain the following lines, so find them and fill them in.
@@ -70,13 +81,16 @@ If get error (make: *** [.build_release/tools/upgrade_net_proto_binary.bin] Erro
 
 **_make pytest_**
 
-  ![image](https://user-images.githubusercontent.com/38114191/54050000-f38bc480-41ff-11e9-9a15-170cf0064727.png)
+![image](https://user-images.githubusercontent.com/38114191/54050000-f38bc480-41ff-11e9-9a15-170cf0064727.png)
 
 
-# Final test 
+### Final test 
 **_python _**
+
 **_import sys_**
+
 **_sys.path.append('/home/ahmad/Desktop/caffe-posenet/python') _**
+
 **_import caffe_**
 
 ![image](https://user-images.githubusercontent.com/38114191/54050025-030b0d80-4200-11e9-9beb-aaf7cf7f2e09.png)
@@ -91,6 +105,7 @@ All done…
 **_pip install lmdb_**
 **_pip install opencv-python_**
 **_sudo apt-get install python-sklearn_**
+**_sudo apt-get install python-tk_**
 
 **_cd /home/ahmad/Desktop/caffe-posenet/posenet/scripts_**
 Create an LMDB localisation dataset with
@@ -107,41 +122,18 @@ directory = '/home/ahmad/Desktop/caffe-posenet/posenet/dataset/KingsCollege/' da
 
 
 ```
- 
-using the command (change directory according to your directory)
-
-**_PYTHONPATH=/home/ahmad/Desktop/caffe-posenet/python:$PYTHONPATH python ./posenet/scripts/create_posenet_lmdb_dataset.py_**
-
-**_Sudo /home/ahmad/Desktop/caffe-posenet/.build_release/tools/compute_image_ mean /home/ahmad/Desktop/caffe-posenet/posenet_dataset_lmdb/ imagemean.binaryproto_**
-
-
-
-**_python ./posenet/scripts/test_posenet.py --model \ posenet/models/train_posenet.prototxt --weights posenet/models/weights_kingscollege.caffemodel --iter 346_**
-
-
- 
 Replace ./include/caffe/util/cudnn.hpp with the latest version of cudnn in caffe, the corresponding cudnn.hpp.
 All files in ./include/caffe/layers that start with cudnn, such as cudnn_conv_layer.hpp. Replaced with the corresponding file of the same name in the latest version of caffe.
 Replace all files starting with cudnn, such as cudnn_lrn_layer.cu, cudnn_pooling_layer.cpp, cudnn_sigmoid_layer.cu, in ./src/caffe/layer with the corresponding file of the same name in the latest version of caffe.
-
-
 
 Switch Pycaffe environment # Because I have two caffes, the official ones and the posenets, which are compiled separately. # import caffe needs to specify which one to import. Sudo gedit ~/.bashrc # Change the caffe path or caffe-posenet path Source ~/.bashrc
 
 Data set introduction
 Take KingsCollege as an example. The following contains a sequence of 8 scene images. 2, 3, 7 are used as test sets (dataset_test.txt), 1, 4, 5, 6, 8 as training sets (dataset_train.txt).
 
-Write a picture description here
-
-The downloaded model file is shown below.
-
-
 Create an lmdb data set Modify the create_posenet_lmdb_dataset.py file under caffe-posenet/posenet/scripts. There are three places, which are 1, 11, 12 lines; Write a picture description here Install lmdb; Sudo pip install lmdb
 
-
 Create a dataset: python posenet/scripts/create_posenet_lmdb_dataset.py. Write a picture description here The created data set is generated in the caffe-posenet directory, the posenet_dataset_lmdb folder in the following figure;
- 
-
 
 Create a mean file Create a new file called "create_posenet_mean.sh";
 
@@ -153,7 +145,7 @@ DATA=./data
 DBTYPE=lmdb
 echo "Computing image mean..."
 ./build/tools/compute_image_mean -backend=$DBTYPE \
-  $PATH/posenet_dataset_$DBTYPE $PATH/mean.binaryproto
+  $PATH/posenet_dataset_$DBTYPE $PATH/imagemean.binaryproto
 echo "Done."
 ```
 
@@ -162,22 +154,26 @@ Put the lmdb dataset generated in the previous step into the caffe-posenet/data 
 Run create_posenet_mean.sh to get the mean.binaryproto file.
 
 
-# Add executable permissions
-chmod 777 posenet/scripts/create_posenet_mean.sh
-./posenet/scripts/create_posenet_mean.sh
-
-Rename the data and the mean file, prefix plus train_;
-
+### Add executable permissions
+**_chmod 777 posenet/scripts/create_posenet_mean.sh
+**_./posenet/scripts/create_posenet_mean.sh
 
 Modify network configuration
 
 Modify the path of the source and mean_file of the layer whose name is data, phase is TEST and TRAIN in "train_kingscollege.prototxt":
 
-sudo apt-get install python-tk
+
 
 Direct test
 input the command:
-sudo python posenet/scripts/test_posenet.py --model models/PoseNet_rawmodel/train_kingscollege.prototxt --weights models/PoseNet_rawmodel/weights_kingscollege.caffemodel --iter 8
+
+**_PYTHONPATH=/home/ahmad/Desktop/caffe-posenet/python:$PYTHONPATH 
+
+**_python ./posenet/scripts/create_posenet_lmdb_dataset.py_**
+
+**_python ./posenet/scripts/test_posenet.py --model \ posenet/models/train_posenet.prototxt --weights posenet/models/weights_kingscollege.caffemodel --iter 346_**
+
+
 Test Results:
 
 ![image](https://user-images.githubusercontent.com/38114191/54049863-942db480-41ff-11e9-9887-c950ae055859.png)
