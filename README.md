@@ -8,52 +8,49 @@ CUdnn 7.5 For Cuda = 10.1
 # For Posenet Caffe Installation:
 
 Steps:
-sudo apt-get update sudo apt-get upgrade
 
+**_sudo apt-get update sudo apt-get upgrade
 sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
-
 sudo apt-get install --no-install-recommends libboost-all-dev sudo apt-get install libatlas-base-dev
-
 sudo apt-get install libopenblas-dev sudo apt-get install the python-dev
-
 sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev sudo apt install python-pip
 pip install --upgrade pip
-
 mkdir .local/install cd .local/install
 git clone https://github.com/BVLC/caffe.git
-
-
-cd caffe
+cd caffe_**
 
 find -name requirements.txt cd python
 
-for req in $(cat requirements.txt); do sudo -H pip install $req; done Copy the Makefile.config or make it 
+**_for req in $(cat requirements.txt); do sudo -H pip install $req; done Copy the Makefile.config or make it_** 
 
 # If want to make from scratch Makefile.config file 
-cp Makefile.config.example Makefile.config
-gedit Makefile.config
+**_cp Makefile.config.example Makefile.config
+gedit Makefile.config_**
 
 The Makefile.config should contain the following lines, so find them and fill them in.
-
+```
 PYTHON_INCLUDE := /usr/include/python2.7
 /usr/lib/python2.7/dist-packages/numpy/core/include
 (for some Ubuntu 16.04 users, the path may be different) 
 PYTHON_INCLUDE := /usr/include/python2.7
 /usr/local/lib/python2.7/dist-packages/numpy/core/include WITH_PYTHON_LAYER := 1
 INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial
-
 LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib /usr/lib/x86_64-linux-gnu
 /usr/lib/x86_64-linux-gnu/hdf5/serial
+```
 
 Finish file Makefile.config now test the caffe
 
-make all
+**_make all_**
 If get error (make: *** [.build_release/tools/upgrade_net_proto_binary.bin] Error 1)
-make clean
+
+**_make clean_**
+
+**_make clean_**
 
 **Uncomment if you're using OpenCV 3** 
-OPENCV_VERSION := 3
- 
+`OPENCV_VERSION := 3
+` 
  
 
 make test
