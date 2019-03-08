@@ -8,7 +8,7 @@ CUdnn 7.5 For Cuda = 10.1
 # For Posenet Caffe Installation:
 
 Steps:
-**_sudo apt-get update sudo apt-get upgrade
+sudo apt-get update sudo apt-get upgrade
 
 sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
 
@@ -23,7 +23,7 @@ mkdir .local/install cd .local/install
 git clone https://github.com/BVLC/caffe.git
 
 
-cd caffe_**
+cd caffe
 
 find -name requirements.txt cd python
 
@@ -174,6 +174,8 @@ Direct test
 input the command:
 sudo python posenet/scripts/test_posenet.py --model models/PoseNet_rawmodel/train_kingscollege.prototxt --weights models/PoseNet_rawmodel/weights_kingscollege.caffemodel --iter 8
 Test Results:
+
+![image](https://user-images.githubusercontent.com/38114191/54049863-942db480-41ff-11e9-9887-c950ae055859.png)
 
 
 # Some common issues (Skip these if u dont face it) 
