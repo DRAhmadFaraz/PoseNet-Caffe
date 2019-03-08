@@ -1,14 +1,23 @@
 # Proper Installation Guide for this Pose_Net 
 
+Requirements:
+Ubuntu > 16.04
+Cuda = 10.1
+CUdnn 7.5 For Cuda = 10.1
 
 For Caffe Installation:
 
 Steps:
 sudo apt-get update sudo apt-get upgrade
+
 sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
+
 sudo apt-get install --no-install-recommends libboost-all-dev sudo apt-get install libatlas-base-dev
+
 sudo apt-get install libopenblas-dev sudo apt-get install the python-dev
+
 sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev sudo apt install python-pip
+
 pip install --upgrade pip
 
 cd python
@@ -180,9 +189,6 @@ Also, open the file CMakeLists.txt and add the following line:
 set(${CMAKE_CXX_FLAGS} "-D_FORCE_INLINES ${CMAKE_CXX_FLAGS}")
 
 if you encounter a missing CUDA error with CUDA version 8.0, find this line in the Makefile.config: CUDA_DIR := /usr/local/cuda
-Add Matlab path if you want,
-# This is required only if you will compile the matlab interface. # MATLAB directory should contain the mex binary in /bin.
-MATLAB_DIR := /usr/local/MATLAB/R2016a/ # MATLAB_DIR := /Applications/R2016a.app
 
 
 
