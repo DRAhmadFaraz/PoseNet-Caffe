@@ -1,8 +1,16 @@
 # Proper Installation Guide for this Pose_Net
 
+This is just the Implementation of Posenet
+
+As described in the ICCV 2015 paper PoseNet: A Convolutional Network for Real-Time 6-DOF Camera Relocalization Alex Kendall, Matthew Grimes and Roberto Cipolla [http://mi.eng.cam.ac.uk/projects/relocalisation/]
+Reference: [](https://github.com/alexgkendall/caffe-posenet)
+
 Requirements: 
+
 Ubuntu > 16.04 
+
 Cuda = 10.1 
+
 CUdnn 7.5 For Cuda = 10.1
 
 # For Posenet Caffe Installation:
