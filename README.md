@@ -4,15 +4,15 @@
 For Caffe Installation:
 
 Steps:
-**sudo apt-get update sudo apt-get upgrade
+sudo apt-get update sudo apt-get upgrade
 sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
 sudo apt-get install --no-install-recommends libboost-all-dev sudo apt-get install libatlas-base-dev
 sudo apt-get install libopenblas-dev sudo apt-get install the python-dev
 sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev sudo apt install python-pip
 pip install --upgrade pip
 
-**cd python
-for req in $(cat requirements.txt); do sudo -H pip install $req; done /**
+cd python
+for req in $(cat requirements.txt); do sudo -H pip install $req; done
  Copy the Makefile.config or make it
  from scratct
 cd..
