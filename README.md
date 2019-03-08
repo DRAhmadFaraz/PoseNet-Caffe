@@ -57,18 +57,22 @@ OPENCV_VERSION := 3
  
 
 make test
- 
+ ![image](https://user-images.githubusercontent.com/38114191/54049933-c63f1680-41ff-11e9-9ae2-2e1e8df713b5.png)
+
 
 
 make runtest
 
+![image](https://user-images.githubusercontent.com/38114191/54049967-dce56d80-41ff-11e9-806b-2d0f30281650.png)
+
   
 make pycaffe
  
+ ![image](https://user-images.githubusercontent.com/38114191/54049987-e8d12f80-41ff-11e9-998d-91c0913ecde9.png)
 
 make pytest
 
-  
+  ![image](https://user-images.githubusercontent.com/38114191/54050000-f38bc480-41ff-11e9-9a15-170cf0064727.png)
 
 
 # Final test 
@@ -77,8 +81,8 @@ import sys
 sys.path.append('/home/ahmad/Desktop/caffe-posenet/python') 
 import caffe
 
+![image](https://user-images.githubusercontent.com/38114191/54050025-030b0d80-4200-11e9-9beb-aaf7cf7f2e09.png)
 
- A
 All done…
 
 
