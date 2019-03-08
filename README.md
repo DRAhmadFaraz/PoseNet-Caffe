@@ -11,7 +11,7 @@ Steps:
 Install Dependencies
 
 
-```
+
 **_sudo apt-get update sudo apt-get upgrade_**
 **_sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler_**
 **_sudo apt-get install --no-install-recommends libboost-all-dev sudo apt-get install libatlas-base-dev_**
@@ -24,7 +24,7 @@ Install Dependencies
 **_cd python_**
 **_for req in $(cat requirements.txt); do sudo -H pip install $req; done Copy the Makefile.config or make it_** 
 **_cp Makefile.config.example Makefile.config_** 
-```
+
 
 ### If want to make from scratch Makefile.config file 
 gedit Makefile.config_**
