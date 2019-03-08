@@ -9,23 +9,23 @@ CUdnn 7.5 For Cuda = 10.1
 
 Steps:
 
-**_sudo apt-get update sudo apt-get upgrade
+**_sudo apt-get update sudo apt-get upgrade_**
 
-sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler
+**_sudo apt-get install libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler_**
 
-sudo apt-get install --no-install-recommends libboost-all-dev sudo apt-get install libatlas-base-dev
+**_sudo apt-get install --no-install-recommends libboost-all-dev sudo apt-get install libatlas-base-dev_**
 
-sudo apt-get install libopenblas-dev sudo apt-get install the python-dev
+**_sudo apt-get install libopenblas-dev sudo apt-get install the python-dev_**
 
-sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev sudo apt install python-pip
+**_sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev sudo apt install python-pip_**
 
-pip install --upgrade pip
+**_pip install --upgrade pip_**
 
-mkdir .local/install cd .local/install
+**_mkdir .local/install cd .local/install_**
 
-git clone https://github.com/BVLC/caffe.git
+**_git clone https://github.com/BVLC/caffe.git_**
 
-cd caffe_**
+**_cd caffe_**
 
 
 find -name requirements.txt cd python
@@ -40,10 +40,11 @@ The Makefile.config should contain the following lines, so find them and fill th
 ```
 PYTHON_INCLUDE := /usr/include/python2.7
 /usr/lib/python2.7/dist-packages/numpy/core/include
+```
 (for some Ubuntu 16.04 users, the path may be different) 
+```
 PYTHON_INCLUDE := /usr/include/python2.7
 /usr/local/lib/python2.7/dist-packages/numpy/core/include WITH_PYTHON_LAYER := 1
-INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial
 LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /usr/lib /usr/lib/x86_64-linux-gnu
 /usr/lib/x86_64-linux-gnu/hdf5/serial
 ```
@@ -55,37 +56,35 @@ If get error (make: *** [.build_release/tools/upgrade_net_proto_binary.bin] Erro
 
 **_make clean_**
 
-**_make clean_**
-
 **Uncomment if you're using OpenCV 3** 
 `OPENCV_VERSION := 3
 ` 
  
 
-make test
+**_make test_**
  ![image](https://user-images.githubusercontent.com/38114191/54049933-c63f1680-41ff-11e9-9ae2-2e1e8df713b5.png)
 
 
 
-make runtest
+**_make runtest_**
 
 ![image](https://user-images.githubusercontent.com/38114191/54049967-dce56d80-41ff-11e9-806b-2d0f30281650.png)
 
   
-make pycaffe
+**_make pycaffe_**
  
  ![image](https://user-images.githubusercontent.com/38114191/54049987-e8d12f80-41ff-11e9-998d-91c0913ecde9.png)
 
-make pytest
+**_make pytest_**
 
   ![image](https://user-images.githubusercontent.com/38114191/54050000-f38bc480-41ff-11e9-9a15-170cf0064727.png)
 
 
 # Final test 
-python 
-import sys
-sys.path.append('/home/ahmad/Desktop/caffe-posenet/python') 
-import caffe
+**_python _**
+**_import sys_**
+**_sys.path.append('/home/ahmad/Desktop/caffe-posenet/python') _**
+**_import caffe_**
 
 ![image](https://user-images.githubusercontent.com/38114191/54050025-030b0d80-4200-11e9-9beb-aaf7cf7f2e09.png)
 
@@ -96,11 +95,11 @@ All done…
 
 # Getting Started with posenet now
 
-pip install lmdb
-pip install opencv-python
-sudo apt-get install python-sklearn
+**_pip install lmdb_**
+**_pip install opencv-python_**
+**_sudo apt-get install python-sklearn_**
 
-cd /home/ahmad/Desktop/caffe-posenet/posenet/scripts
+**_cd /home/ahmad/Desktop/caffe-posenet/posenet/scripts_**
 Create an LMDB localisation dataset with
 
 caffe-posenet/posenet/scripts/create_posenet_lmdb_dataset.py
@@ -108,23 +107,24 @@ caffe-posenet/posenet/scripts/create_posenet_lmdb_dataset.py
 Change lines 1, 11 & 12 to the appropriate directories.
 Test PoseNet with (do according to your path)
 
+```
 caffe_root = '/home/ahmad/Desktop/caffe-posenet/' # Change to your directory to caffe-posenet
 
 directory = '/home/ahmad/Desktop/caffe-posenet/posenet/dataset/KingsCollege/' dataset = 'dataset_train.txt'
 
 
+```
  
-using the command
+using the command (change directory according to your directory)
 
-PYTHONPATH=/home/ahmad/Desktop/caffe-posenet/python:$PYTHONPATH python ./posenet/scripts/create_posenet_lmdb_dataset.py
+**_PYTHONPATH=/home/ahmad/Desktop/caffe-posenet/python:$PYTHONPATH python ./posenet/scripts/create_posenet_lmdb_dataset.py_**
 
-Sudo /home/ahmad/Desktop/caffe-posenet/.build_release/tools/compute_image_ mean /home/ahmad/Desktop/caffe-posenet/posenet_dataset_lmdb/ imagemean.binaryproto
+**_Sudo /home/ahmad/Desktop/caffe-posenet/.build_release/tools/compute_image_ mean /home/ahmad/Desktop/caffe-posenet/posenet_dataset_lmdb/ imagemean.binaryproto_**
 
 
 
-python ./posenet/scripts/test_posenet.py --model \ posenet/models/train_posenet.prototxt --weights posenet/models/weights_kingscollege.caffemodel --iter 346
+**_python ./posenet/scripts/test_posenet.py --model \ posenet/models/train_posenet.prototxt --weights posenet/models/weights_kingscollege.caffemodel --iter 346_**
 
-http://www.voidcn.com/article/p-eygmgotp-bro.html
 
  
 Replace ./include/caffe/util/cudnn.hpp with the latest version of cudnn in caffe, the corresponding cudnn.hpp.
@@ -152,6 +152,7 @@ Create a dataset: python posenet/scripts/create_posenet_lmdb_dataset.py. Write a
 
 Create a mean file Create a new file called "create_posenet_mean.sh";
 
+```
 #!/usr/bin/env sh 
 set -e
 PATH=./data
@@ -161,6 +162,7 @@ echo "Computing image mean..."
 ./build/tools/compute_image_mean -backend=$DBTYPE \
   $PATH/posenet_dataset_$DBTYPE $PATH/mean.binaryproto
 echo "Done."
+```
 
 Put the lmdb dataset generated in the previous step into the caffe-posenet/data directory;
 
